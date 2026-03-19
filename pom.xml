@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>maven-web-application</artifactId>
+  <version>1.0.0</version>
+
+  <!-- Build a WAR so Jenkins can deploy to Tomcat -->
+  <packaging>war</packaging>
+
+  <name>maven-web-application</name>
+  <description>Static website packaged as a WAR for Tomcat</description>
+
+  <properties>
+    <!-- You don't have Java sources, but set a default toolchain -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <!-- This controls the WAR file name: maven-web-application.war -->
+    <finalName>maven-web-application</finalName>
+
+    <plugins>
+      <!-- Not strictly needed for static content, but harmless -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>8</release>
+        </configuration>
+      </plugin>
+
+      <!-- WAR plugin: packs everything under src/main/webapp into the WAR -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <!-- For a purely static site, you usually don't need a web.xml -->
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <!-- Optional: exclude dotfiles if any -->
+          <packagingExcludes>**/.*</packagingExcludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- No dependencies required for a static site -->
+  <dependencies/>
+</project>
+``
