@@ -11,6 +11,22 @@
   <!-- Build a WAR so Jenkins can deploy to Tomcat -->
   <packaging>war</packaging>
 
+		<distributionManagement>
+	
+	    <repository>
+	      <id>nexus</id>
+	      <name>KK FUNDA Releases Nexus Repository</name>
+	      <url>http://3.6.90.210:8081/repository/jio-release/</url>
+	    </repository>
+	    
+	    <snapshotRepository>
+	      <id>nexus</id>
+	      <name>KK FUNDA Snapshot Nexus Repository </name>
+	      <url>http://3.6.90.210:8081/repository/Jio-Snapshot/</url>
+	    </snapshotRepository>
+	    
+	</distributionManagement>
+
   <name>Project_2098</name>
   <description>Static website packaged as a WAR for Tomcat</description>
 
@@ -46,21 +62,7 @@
       </plugin>
 
 
-	<distributionManagement>
-	
-	    <repository>
-	      <id>nexus</id>
-	      <name>KK FUNDA Releases Nexus Repository</name>
-	      <url>http://3.6.90.210:8081/repository/jio-release/</url>
-	    </repository>
-	    
-	    <snapshotRepository>
-	      <id>nexus</id>
-	      <name>KK FUNDA Snapshot Nexus Repository </name>
-	      <url>http://3.6.90.210:8081/repository/Jio-Snapshot/</url>
-	    </snapshotRepository>
-	    
-	</distributionManagement>
+
 
       <!-- WAR plugin: packs everything under src/main/webapp into the WAR -->
       <plugin>
